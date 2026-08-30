@@ -1,6 +1,6 @@
 corridas = []
 equipes = []
-passagens = []  # Nova lista para armazenar os registros: [cod_corrida, num_equipe, checkpoint]
+passagens = []
 
 while True:
     print("=================================")
