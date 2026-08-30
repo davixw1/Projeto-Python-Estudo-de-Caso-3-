@@ -13,9 +13,8 @@ while True:
     
     opcao_principal = input("Escolha uma opção: ").strip()
     
-    # ==========================================
     # SUBMENU 1: CORRIDAS
-    # ==========================================
+
     if opcao_principal == "1":
         while True:
             print("\n=========== CORRIDAS ===========")
@@ -51,13 +50,12 @@ while True:
                         print(f"{'Equipe':<8} {'Checkpoints registrados':>23}")
                         print("-" * 32)
                         
-                        # CONTAGEM USANDO APENAS LISTAS (SEM DICIONÁRIO)
+
                         teve_registro = False
                         for eq in equipes:
                             num_equipe = eq[0]
                             contador = 0
                             
-                            # Para cada equipe, verifica a lista de passagens
                             for p in passagens:
                                 if p[0] == cod_corrida and p[1] == num_equipe:
                                     contador += 1
@@ -82,7 +80,6 @@ while True:
                         print(f"{'Equipe':<8} {'Checkpoints registrados':>23}")
                         print("-" * 32)
                         
-                        # CONTAGEM USANDO APENAS LISTAS (SEM DICIONÁRIO)
                         teve_registro = False
                         for eq in equipes:
                             num_equipe = eq[0]
@@ -127,9 +124,9 @@ while True:
             else:
                 print("\nOpção inválida!")
 
-    # ==========================================
+
     # SUBMENU 2: EQUIPES
-    # ==========================================
+
     elif opcao_principal == "2":
         while True:
             print("\n============ EQUIPES ============")
@@ -209,9 +206,8 @@ while True:
             else:
                 print("\nOpção inválida!")
 
-    # ==========================================
     # SUBMENU 3: ACOMPANHAMENTO
-    # ==========================================
+
     elif opcao_principal == "3":
         while True:
             print("\n========= ACOMPANHAMENTO =========")
@@ -227,7 +223,6 @@ while True:
                 num_equipe = input("Número da equipe: ").strip()
                 checkpoint = input("Checkpoint: ").strip()
                 
-                # Validação de tipos (ver se digitaram números)
                 if not (cod_corrida.isdigit() and checkpoint.isdigit()):
                     print("\nErro: Código da corrida e Checkpoint devem ser numéricos.")
                     continue
@@ -235,12 +230,10 @@ while True:
                 cod_corrida = int(cod_corrida)
                 checkpoint = int(checkpoint)
                 
-                # 1. Verifica se a corrida existe
                 if cod_corrida < 1 or cod_corrida > len(corridas):
                     print("\nErro: A corrida não existe.")
                     continue
                     
-                # 2. Verifica se a equipe existe
                 equipe_existe = False
                 for eq in equipes:
                     if eq[0] == num_equipe:
@@ -250,13 +243,11 @@ while True:
                     print("\nErro: A equipe não existe.")
                     continue
                     
-                # 3. Verifica se o checkpoint existe naquela corrida
                 max_checkpoints = corridas[cod_corrida - 1][1]
                 if checkpoint < 1 or checkpoint > max_checkpoints:
                     print(f"\nErro: Checkpoint inválido. Esta corrida tem de 1 a {max_checkpoints} checkpoints.")
                     continue
                     
-                # 4. Verifica se a equipe já registrou (Impedir duplicado)
                 registro_duplicado = False
                 for p in passagens:
                     if p[0] == cod_corrida and p[1] == num_equipe and p[2] == checkpoint:
@@ -280,7 +271,6 @@ while True:
                     
                 cod_corrida = int(cod_corrida)
                 
-                # Buscando os nomes para a exibição
                 nome_corrida = ""
                 if 1 <= cod_corrida <= len(corridas):
                     nome_corrida = corridas[cod_corrida - 1][0]
@@ -299,7 +289,6 @@ while True:
                     print(f"\nCorrida: {nome_corrida}")
                     print(f"Equipe: {nome_equipe}\n")
                     
-                    # Filtra os checkpoints dessa equipe nessa corrida
                     cps_registrados = []
                     for p in passagens:
                         if p[0] == cod_corrida and p[1] == num_equipe:
@@ -309,7 +298,7 @@ while True:
                         print("A equipe ainda não registrou nenhum checkpoint nesta corrida.")
                     else:
                         print("Checkpoints registrados:\n")
-                        cps_registrados.sort() # Organiza em ordem crescente
+                        cps_registrados.sort()
                         for cp in cps_registrados:
                             print(cp)
 
