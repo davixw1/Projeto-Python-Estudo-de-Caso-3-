@@ -34,7 +34,11 @@ while True:
                 if qtd_checkpoints <= 0:
                     print("\nA quantidade de checkpoints deve ser maior que zero!")
                 else:
-                    corridas.append([nome_corrida, qtd_checkpoints])
+                    corrida = {
+                        "nome": nome_corrida,
+                        "checkpoints": qtd_checkpoints
+                    }
+                    corridas.append(corrida)
                     print("\nCorrida cadastrada com sucesso!")
                     
             elif opcao_corrida == "2":
@@ -45,7 +49,7 @@ while True:
                     for i in range(len(corridas)):
                         c = corridas[i]
                         cod_corrida = i + 1
-                        print(f"\nCORRIDA {cod_corrida}: {c[0]}")
+                        print(f"\nCORRIDA {cod_corrida}: {c.get('nome')}")
                         
                         print(f"{'Equipe':<8} {'Checkpoints registrados':>23}")
                         print("-" * 32)
@@ -53,11 +57,11 @@ while True:
 
                         teve_registro = False
                         for eq in equipes:
-                            num_equipe = eq[0]
+                            num_equipe = eq.get("numero")
                             contador = 0
                             
                             for p in passagens:
-                                if p[0] == cod_corrida and p[1] == num_equipe:
+                                if p.get("cod_corrida") == cod_corrida and p.get("num_equipe") == num_equipe:
                                     contador += 1
                                     
                             if contador > 0:
@@ -76,17 +80,17 @@ while True:
                     if 0 <= idx < len(corridas):
                         c = corridas[idx]
                         cod_corrida = idx + 1
-                        print(f"\nCORRIDA: {c[0]}\n")
+                        print(f"\nCORRIDA: {c.get('nome')}\n")
                         print(f"{'Equipe':<8} {'Checkpoints registrados':>23}")
                         print("-" * 32)
                         
                         teve_registro = False
                         for eq in equipes:
-                            num_equipe = eq[0]
+                            num_equipe = eq.get("numero")
                             contador = 0
                             
                             for p in passagens:
-                                if p[0] == cod_corrida and p[1] == num_equipe:
+                                if p.get("cod_corrida") == cod_corrida and p.get(num_equipe) == num_equipe:
                                     contador += 1
                                     
                             if contador > 0:
