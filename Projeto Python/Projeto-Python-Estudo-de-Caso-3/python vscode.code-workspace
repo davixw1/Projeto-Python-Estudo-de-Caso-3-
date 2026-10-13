@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"path": "../../../Documents/python vscode"
+		},
+		{
+			"path": "../../../Documents/site autoria web 2º bimestre"
+		},
+		{
+			"path": "../../../Documents/curso_html-css-javascript"
+		},
+		{
+			"path": "../../../Downloads/drive-download-20260821T175233Z-1-001"
+		},
+		{
+			"path": "../../../Downloads/aw_21-08"
+		},
+		{
+			"path": "../../../Documents/html-css vscode"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "html-css vscode"
+	}
+}
